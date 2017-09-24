@@ -1,0 +1,11 @@
+{
+  "name": "ezr_logger",
+  "version": "1.0.0",
+  "description": "Datalogger for EZR heating Controller",
+  "main": "app.js",
+  "author": "dgrill",
+  "dependencies": {
+    "mongodb": "^2.2.11",
+    "xml2js": "^0.4.17"
+  }
+}
