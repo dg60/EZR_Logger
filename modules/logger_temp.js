@@ -47,20 +47,20 @@ module.exports = {
             agent: false  // create a new agent just for this one request
         }, (res) => {
         
-            const {statusCode} = res;
-            let error;
+              const {statusCode} = res;
+              let error;
 
-            if (statusCode !== 200) {
-            error = new Error('Request Failed.\n' +
-                                  `Status Code: ${statusCode}`);
-            }
+              if (statusCode !== 200) {
+                error = new Error('Request Failed.\n' +
+                                  `Status Code: ${statusCode}` + new Date());
+              }
               
-            if (error) {
+              if (error) {
                 console.error(error.message);
                 // consume response data to free up memory
                 res.resume();
                 return;
-            }
+              }
             
             res.on('data', function (chunk) {
                 output += chunk;
@@ -75,7 +75,7 @@ module.exports = {
                 parseString(xml, function (err, result) {
 
                     if (err) {
-                        console.error('Error parsing XML File !!!')
+                        console.error('Error parsing XML File !!! ' + new Date())
                     }
                     else {
                         ezr.DATETIME = result.Devices.Device[0].DATETIME;
@@ -103,7 +103,7 @@ module.exports = {
 
             });
         }).on('error',(e) =>{
-           console.error('Got error: ${e.message}'); 
+           console.error('Got error: ' + e.message + new Date()); 
         });
 
         // Save the data
